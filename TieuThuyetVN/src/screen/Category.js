@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Button, Input, ListItem, Text, Tooltip } from 'react-native-elements';
-import { StyleSheet, Dimensions, View } from 'react-native';
+import { Button, Input, ListItem, Text } from 'react-native-elements';
+import { StyleSheet, Dimensions, View, SafeAreaView, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import Tooltip from 'rn-tooltip';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -55,16 +55,21 @@ const list = [
         name: 'Chris Jackson',
         description: 'Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết'
     },
+    {
+        name: 'Chris Jackson',
+        description: 'Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết Chi tiết'
+    },
 ];  
 
 const Category = () => {
     return (
-        <View style={{flex: 1}}>
+        <SafeAreaView style={{flex: 1}}>
+            <ScrollView>
             {
                 list.map((l, i) => (
                 <ListItem key={i} bottomDivider onPress={() => console.log(1)}>
                     <ListItem.Content>
-                        <ListItem.Title>{l.name} {' '}
+                        <ListItem.Title style={{fontWeight: 'bold'}}>{l.name} {' '}
                             <Tooltip  height={'auto'} popover={<Text>{l.description}</Text>}>
                                 <Icon name="info-circle" size={15} color={'black'} />
                             </Tooltip>
@@ -77,7 +82,8 @@ const Category = () => {
                 </ListItem>
                 ))
             }
-        </View>
+            </ScrollView>
+        </SafeAreaView>
     )
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Input, ListItem, Text, Avatar } from 'react-native-elements';
-import { StyleSheet, Dimensions, View } from 'react-native';
+import { StyleSheet, Dimensions, View, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const width = Dimensions.get('window').width;
@@ -8,7 +8,7 @@ const height = Dimensions.get('window').height;
 
 const Account = () => {
     return (
-        <View style={{flex: 1}}>
+        <SafeAreaView style={{flex: 1}}>
             <View style={{width: width, height: 220, justifyContent: 'center', alignItems: 'center' }}>
                 <Avatar
                     rounded
@@ -57,6 +57,13 @@ const Account = () => {
                     <ListItem.Chevron />
                 </ListItem>
                 <ListItem bottomDivider>
+                    <Icon name='key-change' size={24} />
+                    <ListItem.Content>
+                    <ListItem.Title>Đổi mật khẩu</ListItem.Title>
+                    </ListItem.Content>
+                    <ListItem.Chevron />
+                </ListItem>
+                <ListItem bottomDivider>
                     <Icon name='logout' size={24} />
                     <ListItem.Content>
                     <ListItem.Title>Đăng xuất</ListItem.Title>
@@ -64,7 +71,7 @@ const Account = () => {
                     <ListItem.Chevron />
                 </ListItem>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

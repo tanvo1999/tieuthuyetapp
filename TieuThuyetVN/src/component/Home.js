@@ -218,7 +218,7 @@ const ItemSuccess = ({navigation}) => {
   return (
     <ListItem style={{width: '33.3%'}} onPress={() => {console.log(1)}}>
       <ListItem.Content style={{marginHorizontal: '-7%'}}>
-        <ImageBackground style={styles.imageItemSuccess} source={{uri:'https://tieuthuyet.vn/images/2021/05/de-ton.jpeg'}}/>
+        <ImageBackground imageStyle={{ borderRadius: 10}} style={styles.imageItemSuccess} source={{uri:'https://tieuthuyet.vn/images/2021/05/de-ton.jpeg'}}/>
         <Text style={{fontSize: 13, fontWeight: 'bold', color: '#4E4E4E', textAlign: 'center'}} numberOfLines={1}>Đế tôn Đế tônn Đế tôn Đế tôn</Text>
         <View style={{backgroundColor: '#76e689', width: '100%', borderRadius: 4, alignItems: 'center'}}>
           <Text style={{fontSize: 12}}>1000 Chương</Text>
@@ -251,9 +251,9 @@ const HomeScreen = ({navigation}) => {
   useEffect(() => {
   });
   return (
-    <View style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1}}>
       <View style={{borderBottomWidth: 1, borderBottomColor: 'rgba(0,0,0,0.2)'}}>
-        <TouchableWithoutFeedback onPress={() => console.log(1)}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Login')}>
           <View style={{width: width*0.8, height: 40, borderWidth: 1, borderRadius: 5, marginHorizontal: width*0.1, justifyContent: 'center', marginVertical: 5, backgroundColor: 'white'}}>
             <Text style={{marginLeft: 15, fontSize: 15}}>Tìm kiếm...</Text>
             <View style={{position: 'absolute', right: 0, width: 40, height: 40, justifyContent: 'center', alignItems: 'center', borderLeftWidth: 1}}><Icon name="search" size={35} color={'black'} /></View>
@@ -266,7 +266,7 @@ const HomeScreen = ({navigation}) => {
         <Category navigation={navigation}/>
         <SuccessStory navigation={navigation}/>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -293,6 +293,7 @@ const styles = StyleSheet.create({
     height: 140,
     resizeMode: "contain",
     justifyContent: "center",
+    borderRadius: 10
   },
   textTitle: {
     fontSize: 18, 

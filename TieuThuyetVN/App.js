@@ -25,6 +25,7 @@
  import 'react-native-gesture-handler';
  import { createStackNavigator } from '@react-navigation/stack';
  import StackNavigator from './src/screen/StackNavigator';
+ import DrawerNavigator from './src/screen/DrawerNavigation';
 
   const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
@@ -34,7 +35,7 @@
     };
   
     return (
-      <StackNavigator/>
+      <DrawerNavigator/>
     );
  };
  

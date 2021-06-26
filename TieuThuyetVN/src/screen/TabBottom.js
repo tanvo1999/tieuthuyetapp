@@ -1,29 +1,12 @@
 import * as React from 'react';
-import { Button, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-
-import StackNavigator from './StackNavigator';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from '../component/Home';
 import Category from '../screen/Category';
+import List from '../screen/List';
 import ProfileScreen from '../screen/Account';
 
-function DetailsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push('Details')}
-      />
-    </View>
-  );
-}
 const Tab = createBottomTabNavigator();
-const SettingsStack = createStackNavigator();
-const HomeStack = createStackNavigator();
 
 const TabBottom = () => {
   return (
@@ -31,6 +14,7 @@ const TabBottom = () => {
         screenOptions={({ route }) => ({
           tabBarIcon: ({color}) =>  <Icon name="home" size={20} color={color} />,
         })}
+        initialRouteName="Trang chủ"
         tabBarOptions={{
           activeTintColor: 'white',
           inactiveTintColor: 'black',
@@ -45,7 +29,7 @@ const TabBottom = () => {
           }}>
         </Tab.Screen>
         <Tab.Screen name="Danh sách"
-          component={DetailsScreen}
+          component={List}
           options={{
             tabBarIcon: ({color}) =>  <Icon name="list" size={20} color={color} />,
           }}>

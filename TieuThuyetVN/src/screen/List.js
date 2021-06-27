@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Input, ListItem, Text } from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
 import { StyleSheet, Dimensions, View, SafeAreaView, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Tooltip from 'rn-tooltip';
+import LinearGradient from 'react-native-linear-gradient';
+import TouchableScale from 'react-native-touchable-scale';
+
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -18,6 +20,11 @@ const list = [
         icon: 'fire'
     },
     {
+        name: 'Top truyện yêu thích',
+        navigator: 'asdasdas',
+        icon: 'account-heart'
+    },
+    {
         name: 'Truyện mới cập nhật',
         navigator: 'asdasdas',
         icon: 'archive-arrow-up'
@@ -28,24 +35,14 @@ const list = [
         icon: 'text-box-check'
     },
     {
-        name: 'Truyện đã xem',
+        name: 'Truyện bạn đã xem',
         navigator: 'asdasdas',
         icon: 'eye'
     },
     {
-        name: 'Truyện yêu thích',
+        name: 'Truyện bạn yêu thích',
         navigator: 'asdasdas',
         icon: 'heart-multiple'
-    },
-    {
-        name: 'Truyện được yêu thích nhất',
-        navigator: 'asdasdas',
-        icon: 'account-heart'
-    },
-    {
-        name: 'Tác giả',
-        navigator: 'asdasdas',
-        icon: ''
     },
 ];  
 
@@ -53,17 +50,34 @@ const List = () => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <ScrollView>
-            {
-                list.map((l, i) => (
-                <ListItem key={i} bottomDivider onPress={() => console.log(1)}>
-                    <Icon name={l.icon} size={24} />
-                    <ListItem.Content>
-                        <ListItem.Title style={{fontSize: 20, fontWeight: 'bold'}}>{l.name}</ListItem.Title>
-                    </ListItem.Content>
-                    <ListItem.Chevron></ListItem.Chevron>
-                </ListItem>
-                ))
-            }
+                <View style={{alignItems: 'center', width: width}}>
+                {
+                    list.map((l, i) => (
+                    <ListItem 
+                        key={i}  
+                        bottomDivider 
+                        onPress={() => console.log(1)}
+                        Component={TouchableScale}
+                        friction={90}
+                        tension={100}
+                        activeScale={0.85}
+                        linearGradientProps={{
+                            colors: ['#FF9800', '#F44336'],
+                            start: { x: 1, y: 0 },
+                            end: { x: 0.2, y: 0 },
+                        }}
+                        ViewComponent={LinearGradient}
+                        containerStyle={{marginTop: 10, height: 70, width: '85%', borderRadius: 15}}
+                    >
+                        <Icon name={l.icon} color={'#fff'} size={24} />
+                        <ListItem.Content>
+                            <ListItem.Title numberOfLines={1} style={{fontSize: 20, fontWeight: 'bold', color: '#fff'}}>{l.name}</ListItem.Title>
+                        </ListItem.Content>
+                        <ListItem.Chevron color={'#fff'}></ListItem.Chevron>
+                    </ListItem>
+                    ))
+                }
+                </View>
             </ScrollView>
         </SafeAreaView>
     )

@@ -3,6 +3,7 @@ import { ScrollView, SafeAreaView, View, Text, Dimensions, ImageBackground, Styl
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { BottomSheet, Button, ListItem } from 'react-native-elements';
 import { set } from 'react-native-reanimated';
@@ -14,10 +15,12 @@ const ItemStory = ({navigation}) => {
   return (
     <ImageBackground style={styles.imageItem} source={{uri:'https://tieuthuyet.vn/images/2021/05/de-ton.jpeg'}}>
       <View style={{flex: 1}}>
-          <View style={{paddingVertical: 5, width: '40%', backgroundColor: 'rgba(0,0,0,0.608000700280112)'}}>
+          <View style={{ width: '50%'}}>
+            <LinearGradient paddingVertical={5} start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['rgba(0,0,0,0.9)', 'rgba(0,0,0,0.6)', 'rgba(0,0,0,0)']} style={styles.linearGradient}>
             <Text style={{color:'#FFFC57', fontSize: 13}}>
               <MaterialCommunityIcons name="eye" size={13} color={'#FFFC57'} /> 77,777
             </Text>
+            </LinearGradient>
           </View>
           <View style={{position: 'absolute', right: 5, top: 5}}>
             <Image style={{width: 22, height: 8}} source={{uri: 'https://tieuthuyet.vn/assets/css/img/icon-hot.gif'}} />
@@ -120,10 +123,12 @@ const HotStory = ({navigation}) => {
         <View style={{ padding: 20 }}>
           <ImageBackground resizeMode={'stretch'} style={styles.image} source={{uri:'https://tieuthuyet.vn/images/2021/05/de-ton.jpeg'}}>
             <View style={{flex: 1}}>
-                <View style={{paddingVertical: 5, width: width*0.4-20, backgroundColor: 'rgba(0,0,0,0.608000700280112)'}}>
-                  <Text style={[styles.textTitle,{color:'#FFFC57'}]}>
-                    <MaterialCommunityIcons name="eye" size={18} color={'#FFFC57'} /> 77,777
-                  </Text>
+                <View style={{ width: width*0.4-20}}>
+                  <LinearGradient paddingVertical={5} start={{x: 0, y: 0}} end={{x: 1, y: 0}} colors={['rgba(0,0,0,0.9)', 'rgba(0,0,0,0.6)', 'rgba(0,0,0,0)']} style={styles.linearGradient}>
+                    <Text style={[styles.textTitle,{color:'#FFFC57'}]}>
+                      <MaterialCommunityIcons name="eye" size={18} color={'#FFFC57'} /> 77,777
+                    </Text>
+                  </LinearGradient>
                 </View>
                 <View style={{position: 'absolute', right: 5, top: 5}}>
                   <Image style={{width: 28, height: 11}} source={{uri: 'https://tieuthuyet.vn/assets/css/img/icon-hot.gif'}} />
@@ -189,7 +194,11 @@ const NewStory = ({navigation}) => {
 
 const ItemCategory = ({navigation}) => {
   return (
-    <ListItem style={{width: '48%', shadowOffset: {width: 0, height: 0}, shadowOpacity: 0.8 , shadowColor: '#4b0082', borderWidth: 1, borderRadius: 7, margin: '1%'}} containerStyle={{backgroundColor: 'rgb(151, 81, 212)', borderRadius: 7}} onPress={() => {console.log(1)}}>
+    <ListItem 
+      style={styles.categoryItem} 
+      containerStyle={{backgroundColor: 'rgb(151, 81, 212)', borderRadius: 7}} 
+      onPress={() => {console.log(1)}}
+    >
       <ListItem.Content>
         <Text numberOfLines={1} style={{ color: 'white',width: '100%' , textAlign: 'center', padding: 0, fontSize: 16, fontWeight: 'bold'}}>1Simon Mignolet</Text>
       </ListItem.Content>
@@ -299,7 +308,19 @@ const styles = StyleSheet.create({
     fontSize: 18, 
     fontWeight: '500',
     textTransform: 'uppercase'
-  }
+  },
+  categoryItem: {
+    width: '48%', 
+    shadowOffset: 
+    {
+      width: 0, 
+      height: 0
+    }, 
+    shadowOpacity: 0.8 , 
+    shadowColor: '#4b0082', 
+    borderWidth: 1, 
+    borderRadius: 7, 
+    margin: '1%'}
 });
 
 export default HomeScreen;

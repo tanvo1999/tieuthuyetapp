@@ -19,7 +19,7 @@ const Stack = createStackNavigator();
 function LogoTitle() {
     return (
       <Image
-        style={{ width: 200, height: 60, marginTop: 10 }}
+        style={{ width: 200, height: 60, marginLeft: -20 }}
         source={Logo}
       />
     );

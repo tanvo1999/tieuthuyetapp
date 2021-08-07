@@ -7,27 +7,20 @@
  */
 
  import React from 'react';
- import type {Node} from 'react';
  import {
-   SafeAreaView,
-   ScrollView,
-   StatusBar,
    StyleSheet,
-   Text,
    useColorScheme,
-   View,
  } from 'react-native';
  
  import {
    Colors
  } from 'react-native/Libraries/NewAppScreen';
- import { NavigationContainer } from '@react-navigation/native';
+ import SplashScreen from 'react-native-splash-screen'
  import 'react-native-gesture-handler';
- import { createStackNavigator } from '@react-navigation/stack';
- import StackNavigator from './src/screen/StackNavigator';
  import DrawerNavigator from './src/screen/DrawerNavigation';
 
   const App = () => {
+    SplashScreen.hide();
     const isDarkMode = useColorScheme() === 'dark';
   
     const backgroundStyle = {
